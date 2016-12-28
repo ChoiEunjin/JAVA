@@ -1,6 +1,5 @@
 < JAVA 언어를 사용하여 작성한 달력 프로그램 >
-
-시연 : https://www.youtube.com/watch?v=oh_SRHktKqM
+ 
 1. ＜, ＞버튼을 이용하여 월 이동
 2. ≪, ≫ 버튼을 이용하여 년 이동
 3. Today 버튼을 이용하여 오늘 날짜 이동 및 강조
