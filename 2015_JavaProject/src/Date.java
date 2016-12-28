@@ -11,10 +11,10 @@ public class Date extends JFrame implements ActionListener {
 	JPanel set = new JPanel();
 	JPanel date = new JPanel();
 	JPanel msg = new JPanel();
-	// ÆĞ³Î »ı¼º
+	// íŒ¨ë„ ìƒì„±
 
 	JLabel putDate = new JLabel();
-	JButton plus = new JButton("¦«");
+	JButton plus = new JButton("â”¼");
 	JButton prevYear = new JButton("<<");
 	JButton prevMon = new JButton("<");
 	JButton nextMon = new JButton(">");
@@ -44,18 +44,18 @@ public class Date extends JFrame implements ActionListener {
 	private BufferedReader[] d = new BufferedReader[4];
 	private BufferedWriter[] dd = new BufferedWriter[4];
 
-	// ÆÄÀÏ ÀÔÃâ·Â
+	// íŒŒì¼ ì…ì¶œë ¥
 	DefaultTableModel model;
 	JTable table;
 	JScrollPane scroll;
-	// JTable »ç¿ë
+	// JTable ì‚¬ìš©
 
 	addSchedule sc;
 
 	Date() {
 		setTitle("Scheduler");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Title & EXIT ¼³Á¤
+		// Title & EXIT ì„¤ì •
 
 		set.setBackground(new Color(255, 185, 185));
 		set.add(plus);
@@ -86,7 +86,7 @@ public class Date extends JFrame implements ActionListener {
 		nextYear.addActionListener(this);
 		nextYear.setBackground(new Color(255, 243, 212));
 		//Year
-		// Panel 1 : ¼³Á¤(Set)
+		// Panel 1 : ì„¤ì •(Set)
 
 		date.setLayout(new GridLayout(7, 6));
 		date.setBackground(Color.lightGray);
@@ -101,22 +101,22 @@ public class Date extends JFrame implements ActionListener {
 				w[i].setForeground(Color.blue);
 			date.add(w[i]);
 		}
-		// ¿äÀÏ Ãß°¡
+		// ìš”ì¼ ì¶”ê°€
 
 		for (int i = 0; i < btnArr.length; i++) {
 			btnArr[i] = new JButton("");
 			date.add(btnArr[i]);
 		}
-		// ¹öÆ° Ãß°¡
-		// Panel 2 : ´Ş·Â(Date)
+		// ë²„íŠ¼ ì¶”ê°€
+		// Panel 2 : ë‹¬ë ¥(Date)
 
 		msg.add(time);
-		// Panel 3 : ¸Ş½ÃÁö (Message)
+		// Panel 3 : ë©”ì‹œì§€ (Message)
 
 		add(set, BorderLayout.NORTH);
 		add(date, BorderLayout.CENTER);
 		add(msg, BorderLayout.SOUTH);
-		// À§Ä¡ ¼³Á¤
+		// ìœ„ì¹˜ ì„¤ì •
 		
 		
 		ChangeColor(putDate, btnArr);
@@ -142,22 +142,22 @@ public class Date extends JFrame implements ActionListener {
 			date1.add(Calendar.DATE, 1);
 		}
 	}
-	// ¹öÆ° ¾×¼Ç¸®½º³Ê ¼³Á¤
+	// ë²„íŠ¼ ì•¡ì…˜ë¦¬ìŠ¤ë„ˆ ì„¤ì •
 	
 	void getDays(Calendar date) {
 		int year = date.get(Calendar.YEAR);
 		int month = date.get(Calendar.MONTH);
 
 		if (month < 9)
-			putDate.setText(year + "³â 0" + (month + 1) + "¿ù");
+			putDate.setText(year + "ë…„ 0" + (month + 1) + "ì›”");
 		else
-			putDate.setText(year + "³â " + (month + 1) + "¿ù");
+			putDate.setText(year + "ë…„ " + (month + 1) + "ì›”");
 
 		Calendar sDay = Calendar.getInstance();
 		sDay.set(year, month, 1);
-		// sDay¸¦ ÀÔ·Â¿ùÀÇ 1ÀÏ·Î ¼³Á¤
+		// sDayë¥¼ ì…ë ¥ì›”ì˜ 1ì¼ë¡œ ì„¤ì •
 		sDay.add(Calendar.DATE, -sDay.get(Calendar.DAY_OF_WEEK) + 1);
-		// sDay.get(Calendar.DAY_OF_WEEK) : 1ÀÏÀÇ ¿äÀÏÀ» ¾Ë¾Æ³¿
+		// sDay.get(Calendar.DAY_OF_WEEK) : 1ì¼ì˜ ìš”ì¼ì„ ì•Œì•„ëƒ„
 
 		for (int i = 0; i < btnArr.length; i++) {
 			int day = sDay.get(Calendar.DATE);
@@ -180,11 +180,11 @@ public class Date extends JFrame implements ActionListener {
 			sDay.add(Calendar.DATE, 1);
 		} // for
 
-		// ChangeColor ¸Ş¼Òµå È£ÃâÇØ¾ßÇÔ
+		// ChangeColor ë©”ì†Œë“œ í˜¸ì¶œí•´ì•¼í•¨
 		ChangeColor(putDate, btnArr);
-		// ¹öÆ°¿¡ ³¯Â¥ »ğÀÔ.
+		// ë²„íŠ¼ì— ë‚ ì§œ ì‚½ì….
 	}
-	// ³¯Â¥ Ãâ·Â
+	// ë‚ ì§œ ì¶œë ¥
 	
 	void getToday(Calendar date) {
 		int year = date.get(Calendar.YEAR);
@@ -192,9 +192,9 @@ public class Date extends JFrame implements ActionListener {
 		int today = date.get(Calendar.DAY_OF_MONTH);
 		int hour = date.get(Calendar.HOUR_OF_DAY);
 		int minute = date.get(Calendar.MINUTE);
-		time.setText("Now : " + year + "³â " + (month + 1) + "¿ù " + today + "ÀÏ " + hour + ":" + minute);
+		time.setText("Now : " + year + "ë…„ " + (month + 1) + "ì›” " + today + "ì¼ " + hour + ":" + minute);
 	}
-	//³¯Â¥Ãâ·Â
+	//ë‚ ì§œì¶œë ¥
 	
 	void ChangeColor(JLabel putDate, JButton[] btnArr) {
 
@@ -210,42 +210,49 @@ public class Date extends JFrame implements ActionListener {
 					String tok[] = strLine[i].split("/");
 					//String strData[] = { tok[0], tok[1], tok[2], tok[3], tok[4], tok[5] };
 
-					// ÆÄÀÏÀÇ ³â¿ùÀÏ ±¸ÇÏ±â -- tok[1]
+					// íŒŒì¼ì˜ ë…„ì›”ì¼ êµ¬í•˜ê¸° -- tok[1]
 					String fyear = tok[1].substring(0, 4);
 					String fmonth = tok[1].substring(4, 6);
 					String fday = tok[1].substring(6, 8);
 					
-					// ½ºÄÉÁÙ·¯ÀÇ ³â¿ùÀÏ ±¸ÇÏ±â -- putDate¿¡¼­ ³â¿ù, btnArr¿¡¼­ ÀÏ
+					// ìŠ¤ì¼€ì¤„ëŸ¬ì˜ ë…„ì›”ì¼ êµ¬í•˜ê¸° -- putDateì—ì„œ ë…„ì›”, btnArrì—ì„œ ì¼
 					String syear = putDate.getText().substring(0, 4);
 					String smonth = putDate.getText().substring(6, 8);
 					
-					// ÆÄÀÏÀÇ ³â¿ùÀÏ, ½ºÄÉÁÙ·¯ÀÇ ³â¿ùÀÏ ºñ±³
+					// íŒŒì¼ì˜ ë…„ì›”ì¼, ìŠ¤ì¼€ì¤„ëŸ¬ì˜ ë…„ì›”ì¼ ë¹„êµ
 					for (int index = 0; index < btnArr.length; index++) {
 						String sday = btnArr[index].getText();
 						if(Integer.parseInt(sday)<10)
 							sday = "0"+sday;
 						
-						//½ºÄÉÁÙ·¯ÀÇ ³¯Â¥ ±¸ÇØ¿À±â
+						//ìŠ¤ì¼€ì¤„ëŸ¬ì˜ ë‚ ì§œ êµ¬í•´ì˜¤ê¸°
 						
 						if (fyear.equals(syear)
 								&& fmonth.equals(smonth)&& fday.equals(sday)
 								&& btnArr[index].getBackground() != Color.LIGHT_GRAY) {
 							
 							
-							if (tok[2].isEmpty()) { // °ø¹éÀÌ¸é (1ÀÏÂ¥¸® ÀÏÁ¤)
-								// ÇØ´çÀÏÀÚ¿¡ setForeground();
+							if (tok[2].isEmpty()) { // ê³µë°±ì´ë©´ (1ì¼ì§œë¦¬ ì¼ì •)
+								// í•´ë‹¹ì¼ìì— setForeground();
 								btnArr[index].setForeground(foreColors[i]);
 
-							} else { // ¿¬°áÀÏÁ¤ 
+							} else { // ì—°ê²°ì¼ì • 
 
-								// Á¾·áÀÏÀÚ±îÁö ÇØ´çÀÏÀÚ¿¡ setBackground();
-								// ÇÔÁ¤ : ÀÌÀü´Ş¿¡¼­ ´ÙÀ½´Ş·Î ³Ñ¾î°¡´Â ÀÏÁ¤Àº Ç¥½Ã ¾ÈµÊ.
+								// ì¢…ë£Œì¼ìê¹Œì§€ í•´ë‹¹ì¼ìì— setBackground();
+								// í•¨ì • : ì´ì „ë‹¬ì—ì„œ ë‹¤ìŒë‹¬ë¡œ ë„˜ì–´ê°€ëŠ” ì¼ì •ì€ í‘œì‹œ ì•ˆë¨.
 								String eday = tok[2].substring(6, 8);
 								int intsday = Integer.parseInt(sday);
 								int inteday = Integer.parseInt(eday);
-
+								
+								int add = 0;
+								for(int j=0; j<10; j++){
+									if(dateArr[j] == 1){
+										add = j-1;
+										break;
+									}
+								}
 								for (int btnIndex = intsday; btnIndex <= inteday; btnIndex++) {
-									btnArr[btnIndex].setBackground(backColors[i]);
+									btnArr[btnIndex+add].setBackground(backColors[i]);
 
 								} // for
 								
@@ -262,7 +269,7 @@ public class Date extends JFrame implements ActionListener {
 		}
 
 	}
-	// »ö»ó¹Ù²Ù´Â ¸Ş¼Òµå
+	// ìƒ‰ìƒë°”ê¾¸ëŠ” ë©”ì†Œë“œ
 
 	public void actionPerformed(ActionEvent e) {
 		JButton src = (JButton) e.getSource();
@@ -271,22 +278,22 @@ public class Date extends JFrame implements ActionListener {
 			curMon.add(Calendar.MONTH, -1);
 			getDays(curMon);
 			m--;
-		}// Àü ´Ş·Î ÀÌµ¿
+		}// ì „ ë‹¬ë¡œ ì´ë™
 		if (src == nextMon) {
 			curMon.add(Calendar.MONTH, 1);
 			getDays(curMon);
 			m++;
-		}// ´ÙÀ½ ´Ş·Î ÀÌµ¿
+		}// ë‹¤ìŒ ë‹¬ë¡œ ì´ë™
 		if (src == prevYear) {
 			curMon.add(Calendar.MONTH, -12);
 			getDays(curMon);
 			y--;
-		}// Àú¹ø ÇØ·Î ÀÌµ¿
+		}// ì €ë²ˆ í•´ë¡œ ì´ë™
 		if (src == nextYear) {
 			curMon.add(Calendar.MONTH, 12);
 			getDays(curMon);
 			y++;
-		}// ´ÙÀ½ ÇØ·Î ÀÌµ¿
+		}// ë‹¤ìŒ í•´ë¡œ ì´ë™
 		if (src == today) {
 			curMon.add(Calendar.MONTH, -m);
 			curMon.add(Calendar.YEAR, -y);
@@ -303,13 +310,13 @@ public class Date extends JFrame implements ActionListener {
 				}
 			}
 			btnArr[curMon.get(Calendar.DAY_OF_MONTH)+add].setBackground(new Color(177, 236, 243));
-		}// ¿À´Ã ³¯Â¥·Î ÀÌµ¿ + ¹è°æ»ö Ãß°¡
+		}// ì˜¤ëŠ˜ ë‚ ì§œë¡œ ì´ë™ + ë°°ê²½ìƒ‰ ì¶”ê°€
 		if (src == list)
 			new openCatalog();
-		// ¸ñ·Ï¿­±â
+		// ëª©ë¡ì—´ê¸°
 		if (src == plus)
 			new addSchedules();
-		// ÀÏÁ¤Ãß°¡ÇÏ±â
+		// ì¼ì •ì¶”ê°€í•˜ê¸°
 		for (int i = 0; i < 42; i++) {
 			if (src == btnArr[i]) {
 				int sYear = curMon.get(Calendar.YEAR);
@@ -318,7 +325,7 @@ public class Date extends JFrame implements ActionListener {
 				scheduledDay = sYear * 10000 + sMonth * 100 + sDay;
 				new addSchedule();
 			}
-		}// ÀÏÁ¤ ÀÔ·Â Ã¢ Ãâ·Â
+		}// ì¼ì • ì…ë ¥ ì°½ ì¶œë ¥
 		repaint();
 	}
 
@@ -327,12 +334,12 @@ public class Date extends JFrame implements ActionListener {
 		JPanel date = new JPanel();
 		JPanel main = new JPanel();
 		JPanel button = new JPanel();
-		// ÆĞ³Î ¼³Á¤
+		// íŒ¨ë„ ì„¤ì •
 
 		JTextField tfStartTime = new JTextField();
 		JTextField tfEndTime = new JTextField();
 		JTextField tfMemo = new JTextField();
-		// ÅØ½ºÆ®ÇÊµå ¼³Á¤
+		// í…ìŠ¤íŠ¸í•„ë“œ ì„¤ì •
 
 		JTextField startYear = new JTextField(2);
 		JTextField endYear = new JTextField(2);
@@ -342,15 +349,15 @@ public class Date extends JFrame implements ActionListener {
 		JTextField endDay = new JTextField(2);
 		int start = 0;
 		int end = 0;
-		// ³¯Â¥ ÀÔ·Â
+		// ë‚ ì§œ ì…ë ¥
 
-		String[] st = new String[] { "¢¾", "¢À", "¢¼", "¡ß" };
+		String[] st = new String[] { "â™¥", "â™£", "â™ ", "â—†" };
 		JComboBox sticker = new JComboBox(st);
 
 		JButton save = new JButton("Save");
 
 		addSchedules() {
-			setTitle("ÀÏÁ¤ Ãß°¡");
+			setTitle("ì¼ì • ì¶”ê°€");
 			setLocation(550, 0);
 
 			main.setBackground(Color.white);
@@ -360,30 +367,29 @@ public class Date extends JFrame implements ActionListener {
 			GridLayout grid2 = new GridLayout(4, 2);
 			main.setLayout(grid2);
 			grid2.setVgap(5);
-			// È­¸é¼³Á¤
+			// í™”ë©´ì„¤ì •
 
-			date.add(new JLabel("½ÃÀÛ ÀÏÀÚ : "));
+			date.add(new JLabel("ì‹œì‘ ì¼ì : "));
 			date.add(startYear);
-			date.add(new JLabel("³â"));
+			date.add(new JLabel("ë…„"));
 			date.add(startMonth);
-			date.add(new JLabel("¿ù"));
+			date.add(new JLabel("ì›”"));
 			date.add(startDay);
-			date.add(new JLabel("ÀÏ"));
+			date.add(new JLabel("ì¼"));
 
-			date.add(new JLabel("Á¾·á ÀÏÀÚ : "));
+			date.add(new JLabel("ì¢…ë£Œ ì¼ì : "));
 			date.add(endYear);
-			date.add(new JLabel("³â"));
+			date.add(new JLabel("ë…„"));
 			date.add(endMonth);
-			date.add(new JLabel("¿ù"));
+			date.add(new JLabel("ì›”"));
 			date.add(endDay);
-			date.add(new JLabel("ÀÏ"));
+			date.add(new JLabel("ì¼"));
 			date.setBackground((new Color(255, 185, 185)));
-
 			// Panel 1
 
-			main.add(new JLabel("¼±ÅÃ : "));
+			main.add(new JLabel("ì„ íƒ : "));
 			main.add(sticker);
-			main.add(new JLabel("³»¿ë : "));
+			main.add(new JLabel("ë‚´ìš© : "));
 			main.add(tfMemo);
 			main.setBackground(Color.white);
 			// Panel 2
@@ -425,54 +431,54 @@ public class Date extends JFrame implements ActionListener {
 				bw.write(end + "/");
 				bw.write("/");
 				bw.write("/");
-				bw.write(tfMemo.getText() + "/"); // ½½·¡½¬ ¹®ÀÚ·Î µ¥ÀÌÅÍ¸¦ ±¸ºĞÇØ¼­ ÀúÀå
+				bw.write(tfMemo.getText() + "/"); // ìŠ¬ë˜ì‰¬ ë¬¸ìë¡œ ë°ì´í„°ë¥¼ êµ¬ë¶„í•´ì„œ ì €ì¥
 				bw.write("\n");
 				bw.close();
 				//String strData[] = { st[sticker.getSelectedIndex()],
 				//		Integer.toString(start), Integer.toString(end),"", "", tfMemo.getText() };
-			} catch (IOException ex) { // ÀÔÃâ·Â µ¿ÀÛ ½ÇÆĞ ¶Ç´Â ÀÎÅÍ·´Æ® ½Ã ¹ß»ı
+			} catch (IOException ex) { // ì…ì¶œë ¥ ë™ì‘ ì‹¤íŒ¨ ë˜ëŠ” ì¸í„°ëŸ½íŠ¸ ì‹œ ë°œìƒ
 			}
 			ChangeColor(putDate, btnArr);
 			dispose();
 		}
 	}
-	// ¿©·¯ ÀÏÁ¤À» Ãß°¡ÇÏ´Â Å¬·¡½º
+	// ì—¬ëŸ¬ ì¼ì •ì„ ì¶”ê°€í•˜ëŠ” í´ë˜ìŠ¤
 	
 	class addSchedule extends JFrame implements ActionListener {
 		private static final long serialVersionUID = 1L;
 		JPanel date = new JPanel();
 		JPanel main = new JPanel();
 		JPanel button = new JPanel();
-		// ÆĞ³Î ¼³Á¤
+		// íŒ¨ë„ ì„¤ì •
 		JTextField tfStartTime = new JTextField();
 		JTextField tfEndTime = new JTextField();
 		JTextField tfMemo = new JTextField();
-		// ÅØ½ºÆ®ÇÊµå ¼³Á¤
-		String[] st = new String[] { "¢¾", "¢À", "¢¼", "¡ß" };
+		// í…ìŠ¤íŠ¸í•„ë“œ ì„¤ì •
+		String[] st = new String[] { "â™¥", "â™£", "â™ ", "â—†" };
 		JComboBox sticker = new JComboBox(st);
 		JButton save = new JButton("Save");
 
 		addSchedule() {
-			setTitle("ÀÏÁ¤ Ãß°¡");
+			setTitle("ì¼ì • ì¶”ê°€");
 			setLocation(550, 0);
 
 			main.setBackground(Color.white);
 			GridLayout grid = new GridLayout(4, 2);
 			main.setLayout(grid);
 			grid.setVgap(5);
-			// È­¸é¼³Á¤
+			// í™”ë©´ì„¤ì •
 
 			date.add(new JLabel(scheduledDay + ""));
 			date.setBackground((new Color(255, 185, 185)));
 			// Panel 1
-			main.add(new JLabel("¼±ÅÃ : "));
+			main.add(new JLabel("ì„ íƒ : "));
 			main.add(sticker);
 
-			main.add(new JLabel("½ÃÀÛ ½Ã°£ : "));
+			main.add(new JLabel("ì‹œì‘ ì‹œê°„ : "));
 			main.add(tfStartTime);
-			main.add(new JLabel("Á¾·á ½Ã°£ : "));
+			main.add(new JLabel("ì¢…ë£Œ ì‹œê°„ : "));
 			main.add(tfEndTime);
-			main.add(new JLabel("³»¿ë : "));
+			main.add(new JLabel("ë‚´ìš© : "));
 			main.add(tfMemo);
 			main.setBackground(Color.white);
 			// Panel 2
@@ -503,30 +509,30 @@ public class Date extends JFrame implements ActionListener {
 				bw.write("/");
 				bw.write(tfStartTime.getText() + "/");
 				bw.write(tfEndTime.getText() + "/");
-				bw.write(tfMemo.getText() + "/"); // ½½·¡½¬ ¹®ÀÚ·Î µ¥ÀÌÅÍ¸¦ ±¸ºĞÇØ¼­ ÀúÀå
+				bw.write(tfMemo.getText() + "/"); // ìŠ¬ë˜ì‰¬ ë¬¸ìë¡œ ë°ì´í„°ë¥¼ êµ¬ë¶„í•´ì„œ ì €ì¥
 				bw.write("\n");
 				bw.close();
 				String strData[] = { st[sticker.getSelectedIndex()],
 						Integer.toString(scheduledDay), "  ",
 						tfStartTime.getText(), tfEndTime.getText(),
 						tfMemo.getText() };
-			} catch (IOException ex) { // ÀÔÃâ·Â µ¿ÀÛ ½ÇÆĞ ¶Ç´Â ÀÎÅÍ·´Æ® ½Ã ¹ß»ı
+			} catch (IOException ex) { // ì…ì¶œë ¥ ë™ì‘ ì‹¤íŒ¨ ë˜ëŠ” ì¸í„°ëŸ½íŠ¸ ì‹œ ë°œìƒ
 			}
 			ChangeColor(putDate, btnArr);
 			dispose();
 		}
 	}
-	// ÇÏ·ç´ÜÀ§ ÀÏÁ¤ Ãß°¡ÇÏ´Â Å¬·¡½º
+	// í•˜ë£¨ë‹¨ìœ„ ì¼ì • ì¶”ê°€í•˜ëŠ” í´ë˜ìŠ¤
 	
 	class openCatalog extends JFrame implements ActionListener {
 		private static final long serialVersionUID = 1L;
 		JPanel main = new JPanel();
 		JPanel message = new JPanel();
-		// ÆĞ³Î ¼³Á¤
-		String[] st = new String[] { "¢¾", "¢À", "¢¼", "¡ß" };
+		// íŒ¨ë„ ì„¤ì •
+		String[] st = new String[] { "â™¥", "â™£", "â™ ", "â—†" };
 		JComboBox sticker = new JComboBox(st);
-		JButton print = new JButton("Ãâ·Â");
-		JButton delete = new JButton("»èÁ¦");
+		JButton print = new JButton("ì¶œë ¥");
+		JButton delete = new JButton("ì‚­ì œ");
 		
 		ArrayList<String> al_1 = new ArrayList<String>();
 		ArrayList<String> al_2 = new ArrayList<String>();
@@ -534,26 +540,26 @@ public class Date extends JFrame implements ActionListener {
 		ArrayList<String> al_4 = new ArrayList<String>();
 		
 		openCatalog() {
-			setTitle("ÀÏÁ¤ Ãâ·Â");
+			setTitle("ì¼ì • ì¶œë ¥");
 			setLocation(550, 0);
 			main.setBackground(Color.white);
-			// È­¸é ¼³Á¤
+			// í™”ë©´ ì„¤ì •
 
 			main.add(sticker);
 			main.add(print);
 			main.add(delete);
-			// main ÆĞ³Î
+			// main íŒ¨ë„
 
 			model = new DefaultTableModel();
-			model.addColumn("ºĞ·ù");
-			model.addColumn("½ÃÀÛ ³¯Â¥");
-			model.addColumn("Á¾·á ³¯Â¥");
-			model.addColumn("½ÃÀÛ ½Ã°£");
-			model.addColumn("Á¾·á ½Ã°£");
-			model.addColumn("³»¿ë");
+			model.addColumn("ë¶„ë¥˜");
+			model.addColumn("ì‹œì‘ ë‚ ì§œ");
+			model.addColumn("ì¢…ë£Œ ë‚ ì§œ");
+			model.addColumn("ì‹œì‘ ì‹œê°„");
+			model.addColumn("ì¢…ë£Œ ì‹œê°„");
+			model.addColumn("ë‚´ìš©");
 			table = new JTable(model);
 			scroll = new JScrollPane(table);
-			// Å×ÀÌºí Ãâ·Â
+			// í…Œì´ë¸” ì¶œë ¥
 
 			print.addActionListener(this);
 			delete.addActionListener(this);
@@ -591,14 +597,14 @@ public class Date extends JFrame implements ActionListener {
 				} catch (IOException ex) {
 				}
 			}
-			//delete ´­·¶À» °æ¿ì
+			//delete ëˆŒë €ì„ ê²½ìš°
 			if (src == delete) {
 				int row = table.getSelectedRow();
-	            if(row<0) return; // ¼±ÅÃÀÌ ¾ÈµÈ »óÅÂ¸é -1¸®ÅÏ
+	            if(row<0) return; // ì„ íƒì´ ì•ˆëœ ìƒíƒœë©´ -1ë¦¬í„´
 	            DefaultTableModel model = (DefaultTableModel)table.getModel();
 	            //System.out.println(model.getValueAt(row, 0));
 	            model.removeRow(row);
-	            //Å×ÀÌºí¿¡¼­ Á¦°Å
+	            //í…Œì´ë¸”ì—ì„œ ì œê±°
 	            
 	            if(n == 1){
 					al_1.remove(row);
@@ -616,20 +622,20 @@ public class Date extends JFrame implements ActionListener {
 					al_4.remove(row);
 					size = al_4.size();
 				}
-				//ArrayList¿¡¼­ Á¦°Å
+				//ArrayListì—ì„œ ì œê±°
 	            
 	            
-	            //ÀÌÁ¦ ¿©±â¼­ºÎÅÍ ÆÄÀÏ¿¡ ¾î·¹ÀÌ¸®½ºÆ® »õ·ÎÃß°¡.
+	            //ì´ì œ ì—¬ê¸°ì„œë¶€í„° íŒŒì¼ì— ì–´ë ˆì´ë¦¬ìŠ¤íŠ¸ ìƒˆë¡œì¶”ê°€.
 	            try {
 	            	bw = new BufferedWriter(new FileWriter("Data_"+n+".txt", false));
 					model.setNumRows(0);
 					//bw.write("");
 					bw.close();
-					//ÆÄÀÏºñ¿ì±â
+					//íŒŒì¼ë¹„ìš°ê¸°
 					
 					dd[n-1] = new BufferedWriter(new FileWriter("Data_"+n+".txt", true));	
 					String strLine = null;
-					//ÆÄÀÏÀĞ±â¹×Ãâ·Â
+					//íŒŒì¼ì½ê¸°ë°ì¶œë ¥
 					for(int i=0; i<size; i++) {
 						if(n == 1) strLine = al_1.get(i);
 						else if(n == 2) strLine = al_2.get(i);
@@ -648,7 +654,7 @@ public class Date extends JFrame implements ActionListener {
 			} // if(delete)
 		}
 	}
-	// ÀÏÁ¤ ¸ñ·Ï Ãâ·ÂÇÏ´Â Å¬·¡½º
+	// ì¼ì • ëª©ë¡ ì¶œë ¥í•˜ëŠ” í´ë˜ìŠ¤
 
 	
 	public static void main(String[] args) {
